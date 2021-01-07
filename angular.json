@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "HeyAndes"
+  "defaultProject": "HeyAndes",
+  "cli": {
+    "analytics": false
+  }
 }
