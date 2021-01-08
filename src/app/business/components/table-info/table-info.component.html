@@ -1,1 +1,17 @@
-<p>table-info works!</p>
+<table class="table">
+  <thead class="table__head">
+    <tr class="table__col-1">
+      <td>Nombre de la empresa</td>
+      <td>Total de ventas</td>
+      <td>Comision</td>
+      <td>Detalle</td>
+    </tr>
+  </thead>
+  <tbody class="table__body">
+    <tr *ngFor="let business of businessData">
+      <td>{{ business.name }}</td>
+      <td>{{ business.data.length }}</td>
+      <td>{{ business.total }}</td>
+    </tr>
+  </tbody>
+</table>

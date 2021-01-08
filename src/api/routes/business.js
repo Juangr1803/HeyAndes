@@ -30,13 +30,13 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
-
 // GET
 router.get(
   '/:businessId',
-  validationHandler({ businessId: businessIdSchema }, 'params'),
+  // validationHandler({ businessId: businessIdSchema }, 'params'),
   async (req, res, next) => {
     const { businessId } = req.params;
+    console.log({ businessId });
     try {
       const business = await businessService.getBusiness({ businessId });
       response.success(req, res, business, 200, 'Business detail');
