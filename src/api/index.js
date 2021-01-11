@@ -1,13 +1,14 @@
 // Express
-const express = require("express");
+const express = require('express');
 const app = express();
 // Config
-const config = require("./config");
+const config = require('./config');
 // Middlewares
-const cors = require("cors");
-const bodyParser = require("body-parser");
+const cors = require('cors');
+const bodyParser = require('body-parser');
 // Routes
-const router = require("./utils/routes");
+const router = require('./utils/routes');
+const path = require('path');
 
 //-----------------------------------------------------//
 //-----------------------------------------------------//
@@ -19,6 +20,9 @@ app.use(bodyParser.json());
 
 // Routes
 router(app);
+
+// Static
+app.use(express.static(path.join(__dirname, '../../dist/HeyAndes')));
 
 // Port Listening
 app.listen(config.port, (err) => {

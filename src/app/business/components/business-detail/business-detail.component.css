@@ -1,3 +1,7 @@
+.business-detail__title {
+  margin: 15px;
+}
+
 .table {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
   background-color: white;
@@ -12,9 +16,13 @@ p {
   margin: 0;
 }
 
+.col-1 {
+  background-color: #e4e4e4;
+}
+
 .table__col-1 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 50px;
   border-bottom: 1px solid #e4e4e4;
 }
@@ -31,9 +39,6 @@ button,
 .table__col-1 h4 {
   color: rgba(117, 0, 255, 0.9);
 }
-.col-1 {
-  background-color: #e4e4e4;
-}
 
 .table__col-1 h4,
 .table__col-1--detail {
@@ -42,7 +47,7 @@ button,
 }
 
 .table__col-1 p {
-  padding: 18px;
+  padding: 5px;
   font-size: 0.7em;
 }
 

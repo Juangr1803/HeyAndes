@@ -1,17 +1,22 @@
-<table class="table">
-  <thead class="table__head">
-    <tr class="table__col-1">
-      <td>Nombre de la empresa</td>
-      <td>Total de ventas</td>
-      <td>Comision</td>
-      <td>Detalle</td>
-    </tr>
-  </thead>
-  <tbody class="table__body">
-    <tr *ngFor="let business of businessData">
-      <td>{{ business.name }}</td>
-      <td>{{ business.data.length }}</td>
-      <td>{{ business.total }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table">
+  <div class="table__container">
+    <div class="table__col-1 col-1">
+      <h4>Nombre de la empresa</h4>
+      <h4>Total de ventas</h4>
+      <h4>Comision</h4>
+      <h4>Detalle</h4>
+    </div>
+    <div
+      class="table__col-1"
+      *ngFor="let business of businessData | order: 'name'"
+      (click)="businessDetail(business.id)"
+    >
+      <p class="table__col-1--name">{{ business.name }}</p>
+      <p>{{ business.data.length | number }}</p>
+      <p>{{ business.total * 0.025 | number }}</p>
+      <a class="table__col-1--detail" (click)="businessDetail(business.id)"
+        >Ver detalle</a
+      >
+    </div>
+  </div>
+</div>

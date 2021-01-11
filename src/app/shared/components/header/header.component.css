@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+  padding: 20px 0px;
+  background-color: rgba(117, 0, 255, 0.9);
+  text-align: center;
+}
+.header__title {
+  height: 100%;
+  margin: 0px;
+  color: white;
+}

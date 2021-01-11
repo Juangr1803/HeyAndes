@@ -7,7 +7,7 @@ import { MessageBusiness } from '../models/message-business';
   providedIn: 'root',
 })
 export class BusinessService {
-  API_URL: string = 'http://localhost:3000/api/business';
+  API_URL: string = '/api/business';
 
   messageBussines: MessageBusiness;
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Business } from '../../models/business';
 import { MessageBusiness } from '../../models/message-business';
 import { BusinessService } from '../../services/business.service';
+const moment = require('moment');
 
 @Component({
   selector: 'app-business',
@@ -13,37 +14,40 @@ export class BusinessComponent implements OnInit {
   messageB: Business[];
   businessData: any[] = [
     {
-      id: 1,
+      id: 'Ruhiscos-Aventuras-Spa',
       name: 'Ruhiscos Aventuras Spa',
       data: [],
       total: 0,
     },
     {
-      id: 2,
+      id: 'Fuego-Nativo',
       name: 'Fuego Nativo',
       data: [],
       total: 0,
     },
     {
-      id: 3,
+      id: 'test',
       name: 'test',
       data: [],
       total: 0,
     },
     {
-      id: 4,
+      id: 'Por-fortuna',
       name: 'Por fortuna',
       data: [],
       total: 0,
     },
     {
-      id: 5,
+      id: 'Agencia-1',
       name: 'Agencia 1',
       data: [],
       total: 0,
     },
   ];
   business: any[] = [];
+  bestSellingData: number = 0;
+  bestSellingDataName: string = '';
+  mounth: string = '';
 
   constructor(public businessService: BusinessService) {}
 
@@ -83,13 +87,92 @@ export class BusinessComponent implements OnInit {
         }
       }
     }
+    const numbers = [];
+    for (let i = 0; i < this.businessData.length; i++) {
+      if (this.businessData[i].total > this.bestSellingData) {
+        this.bestSellingDataName = this.businessData[i].name;
+        this.bestSellingData = this.businessData[i].total;
+
+        this.businessData[i].data.sort((a, b) => {
+          a = new Date(a.datePayment).getMonth();
+          b = new Date(b.datePayment).getMonth();
+          numbers.push(a);
+          return a > b ? -1 : a < b ? 1 : 0;
+        });
+      }
+    }
+
+    const tempArray = [...numbers].sort();
+    const tempArrayFilter = tempArray.filter((number, i) =>
+      i == 0 ? true : tempArray[i - 1] != number
+    );
+    const counterMounth = tempArrayFilter.map((n) => {
+      return { number: n, count: 0 };
+    });
+
+    counterMounth.map((countM, i) => {
+      const actualMounthLength = tempArray.filter(
+        (number) => number === countM.number
+      ).length;
+      countM.count = actualMounthLength;
+    });
+
+    for (let i = 0; i < counterMounth.length; i++) {
+      counterMounth.sort((a, b) => {
+        return b.count - a.count;
+      });
+    }
+    this.dateToMounth(counterMounth[0].number);
+  }
+
+  dateToMounth(number) {
+    switch (number) {
+      case 1:
+        this.mounth = 'ENERO';
+        break;
+      case 2:
+        this.mounth = 'FEBRERO';
+        break;
+      case 3:
+        this.mounth = 'MARZO';
+        break;
+      case 4:
+        this.mounth = 'ABRIL';
+        break;
+      case 5:
+        this.mounth = 'MAYO';
+        break;
+      case 6:
+        this.mounth = 'JUNIO';
+        break;
+      case 7:
+        this.mounth = 'JULIO';
+        break;
+      case 8:
+        this.mounth = 'AGOSTO';
+        break;
+      case 9:
+        this.mounth = 'SEPTIEMBRE';
+        break;
+      case 10:
+        this.mounth = 'OCTUBRE';
+        break;
+      case 11:
+        this.mounth = 'NOVIEMBRE';
+        break;
+      case 12:
+        this.mounth = 'DICIEMBRE';
+        break;
+      default:
+        this.mounth = 'ENERO';
+        break;
+    }
   }
 
   // GET ALL
   getAllBusiness() {
     this.businessService.getAllBusiness().subscribe(
       (res) => {
-        console.log(res);
         this.messageBusiness = res;
         this.messageB = this.messageBusiness.data;
 

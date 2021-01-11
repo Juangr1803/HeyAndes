@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -26,8 +26,10 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "mongodb": "^3.6.3",
     "rxjs": "~6.6.0",
+    "sort-by": "^1.2.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
@@ -36,7 +38,7 @@
     "@angular/cli": "~11.0.2",
     "@angular/compiler-cli": "~11.0.1",
     "@types/jasmine": "~3.6.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.19.12",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",

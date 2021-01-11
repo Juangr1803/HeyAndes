@@ -1,0 +1,17 @@
+{
+  "name": "heyandes",
+  "version": 2,
+  "builds": [
+    {
+      "src": "/src/api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "methods": ["GET", "POST", "PUT"],
+      "dest": "/src/api/index.js"
+    }
+  ]
+}

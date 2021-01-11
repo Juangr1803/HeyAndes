@@ -1,0 +1,28 @@
+<app-title-business-detail
+  [businessDataDetail]="businessDataDetail"
+></app-title-business-detail>
+<div class="table">
+  <div class="table__container">
+    <div class="table__col-1 col-1">
+      <h4>Nombre del cliente</h4>
+      <h4>Personas</h4>
+      <h4>Dia</h4>
+      <h4>Hora</h4>
+      <h4>Valor de la venta</h4>
+    </div>
+    <div
+      class="table__col-1"
+      *ngFor="
+        let business of businessDataDetail.data
+          | order: 'name'
+          | orderSell: 'finalPrice'
+      "
+    >
+      <p class="table__col-1--name">{{ business.name }}</p>
+      <p>{{ business.persons | number }}</p>
+      <p>{{ business.day }}</p>
+      <p>{{ business.hour }}</p>
+      <p>{{ business.finalPrice | number }}</p>
+    </div>
+  </div>
+</div>
